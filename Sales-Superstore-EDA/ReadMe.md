@@ -146,7 +146,7 @@ A: Press `Ctrl+C` in your terminal where the app is running.
 
 ## 🔗 Live Demo (Optional)
 
-If deployed online: [https://your-app-link.streamlit.app](https://your-app-link.streamlit.app)
+If deployed online: [https://your-app-link.streamlit.app](https://sales-superstore-eda-buegkauyislcfwxx5brtcq.streamlit.app/)
 
 ---
 
