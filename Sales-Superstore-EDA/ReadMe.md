@@ -1,6 +1,7 @@
 
 
 # 📊 SuperStore EDA – Interactive Sales Dashboard
+![App Dashboard Preview](Images/1.png)
 
 ## 🤔 What is this?
 
