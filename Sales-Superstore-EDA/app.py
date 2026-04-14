@@ -17,9 +17,10 @@ if fl is not None:
     df = pd.read_csv(fl)
     st.success("File uploaded successfully!")
 else:
-    df = pd.read_csv("Superstore.csv")
-    st.info("Using default dataset")
-
+    # Load directly from GitHub
+    csv_url = "https://raw.githubusercontent.com/Dr-Austine/sales-analysis/main/Sales-Superstore-EDA/Superstore.csv"
+    df = pd.read_csv(csv_url)
+    st.info("Using default dataset from GitHub")
 
 # DISPLAY DATA in expander
 with st.expander("🔍 Click to view dataset preview"):
