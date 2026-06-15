@@ -302,7 +302,7 @@ Breakdown of investment allocation by:
 
 ### Video Walkthrough
 
-[▶ Watch Demo Video](assets/demo/project-demo.mp4)
+![](Attachments/demo_vid.mp4)
 
 ---
 
@@ -326,26 +326,19 @@ Breakdown of investment allocation by:
 ```text
 US-Insurance-Investment-Analytics-Dashboard/
 │
-├── app.py
-├── Query.py
-├── generate_dataset.py
-│
+├── File/
+│  ├── app.py
+│  ├── Query.py
+│  ├── generate_dataset.py
+│  │
 ├── data/
 │   ├── Logo.jpg
 │   └── US_Insurance_Analytics_Data.csv
 │
-├── database/
-│   ├── schema.sql
-│   └── sample_data.sql
-│
-├── assets/
-│   ├── screenshots/
-│   │   ├── dashboard-home.png
-│   │   ├── dashboard-progress.png
-│   │   └── database-schema.png
-│   │
-│   └── demo/
-│       └── project-demo.mp4
+├── Attachment/
+│   ├── dashboard-home.png
+│   ├── dashboard-progress.png
+│   ├── project-demo.mp4
 │
 ├── requirements.txt
 ├── README.md
@@ -457,19 +450,6 @@ Potential enhancements:
 * Cloud Database Integration
 * Real-Time Data Streaming
 
----
-
-# 👨‍💻 Author
-
-**Your Name**
-
-Data Analytics | Business Intelligence | Python Development
-
-LinkedIn: [Add Link]
-
-GitHub: [Add Link]
-
----
 
 # ⭐ If you found this project useful
 
