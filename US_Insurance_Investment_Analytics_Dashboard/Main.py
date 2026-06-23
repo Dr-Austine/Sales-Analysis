@@ -10,13 +10,13 @@ from mysql_con import *
 # ==============================================================================
 # PLACE THE CORRECTED FUNCTION HERE (Right after your imports)
 # ==============================================================================
-def local_css(file_name):
+def local_css(style.css):
     """
     Dynamically builds the path to the CSS file based on Main.py's location
     and injects its styles into the Streamlit DOM.
     """
     current_dir = os.path.dirname(__file__)
-    file_path = os.path.join(current_dir, file_name)
+    file_path = os.path.join(current_dir, style.css)
     
     with open(file_path) as f:
         st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
