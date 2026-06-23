@@ -1,0 +1,109 @@
+/* ==========================================================================
+   GLOBAL APP BACKGROUND & TYPOGRAPHY
+   ========================================================================== */
+.stApp {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* --- DARK MODE RULES (Locking in the look from Screenshot 1) --- */
+@media (prefers-color-scheme: dark) {
+    .stApp {
+        background-color: #0e1117; /* Matte dark background */
+        color: #e0e1dd;
+    }
+    h3 { 
+        color: #ffffff !important; 
+    }
+    section[data-testid="stSidebar"] { 
+        background-color: #161920 !important; /* Premium dark grey sidebar */
+        border-right: 1px solid #1f2937 !important;
+    }
+    /* Muted grey sidebar text headers */
+    section[data-testid="stSidebar"] h1, 
+    section[data-testid="stSidebar"] h2,
+    section[data-testid="stSidebar"] h3,
+    section[data-testid="stSidebar"] p,
+    section[data-testid="stSidebar"] label {
+        color: #ffffff !important; 
+        opacity: 0.9;
+    }
+    div[data-baseweb="select"] { 
+        background-color: #1f2937 !important; 
+        border: 1px solid #374151 !important;
+    }
+    div[data-testid="stDataFrame"], 
+    div[data-testid="stExpander"] { 
+        background-color: #161920 !important; 
+    }
+}
+
+/* --- LIGHT MODE RULES --- */
+@media (prefers-color-scheme: light) {
+    .stApp {
+        background-color: #f8f9fa; 
+        color: #212529; 
+    }
+    h3 {
+        color: #1c2541 !important; 
+    }
+    section[data-testid="stSidebar"] {
+        background-color: #ffffff !important; 
+        border-right: 1px solid rgba(0, 0, 0, 0.1) !important;
+    }
+    section[data-testid="stSidebar"] h1, 
+    section[data-testid="stSidebar"] h2,
+    section[data-testid="stSidebar"] h3,
+    section[data-testid="stSidebar"] p,
+    section[data-testid="stSidebar"] label {
+        color: #212529 !important;
+    }
+    div[data-baseweb="select"] {
+        background-color: #ffffff !important;
+        border: 1px solid rgba(0, 0, 0, 0.15) !important;
+    }
+    div[data-testid="stDataFrame"], 
+    div[data-testid="stExpander"] {
+        background-color: #ffffff !important;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    }
+}
+
+/* ==========================================================================
+   SHARED STRUCTURAL STYLING (Applies to both)
+   ========================================================================== */
+h3 {
+    font-weight: 700 !important;
+    letter-spacing: -0.5px;
+    padding-bottom: 10px;
+}
+
+div[data-baseweb="select"] {
+    border-radius: 6px !important;
+}
+
+div[data-testid="stDataFrame"] {
+    border-radius: 8px;
+    padding: 10px;
+}
+
+div[data-testid="stExpander"] {
+    border-radius: 6px !important;
+}
+
+/* Dynamic Metric Colors for Dark/Light Mode compatibility */
+@media (prefers-color-scheme: dark) {
+    div[data-testid="stMetricValue"], 
+    div[data-testid="stMetricLabel"], 
+    div[data-testid="stMetricLabel"] * {
+        color: #FFFFFF !important;
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    div[data-testid="stMetricValue"], 
+    div[data-testid="stMetricLabel"], 
+    div[data-testid="stMetricLabel"] * {
+        color: #212529 !important; 
+    }
+}
