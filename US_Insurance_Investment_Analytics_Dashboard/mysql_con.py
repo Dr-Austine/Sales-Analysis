@@ -7,7 +7,7 @@ def view_all_data():
     from the local CSV file structure for fast cloud deployment.
     """
     # 1. Track down the absolute path to your file structure
-    current_dir = os.path.dirname(US_Insurance_Investment_Analytics_Dashboard/data/customers.csv)
+    current_dir = os.path.dirname(__file__)
     
     # 2. Match the exact location: data/customers.csv relative to your folder
     csv_path = os.path.join(current_dir, "data", "customers.csv")
