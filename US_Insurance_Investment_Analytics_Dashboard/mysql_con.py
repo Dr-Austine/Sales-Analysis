@@ -1,21 +1,20 @@
-import mysql.connector
 import streamlit as st
+import mysql.connector
 
-# Connection settings
-conn = mysql.connector.connect(
-    host="localhost",
-    port="3306",          # Fixed: Changed from 330 to 3306
-    user="root",
-    password="leanna_miya",
-    database="learning_house"  # Make sure this matches your actual phpMyAdmin database name!
-)
-c = conn.cursor()
-
-# Fetch data
 def view_all_data():
-    c.execute('SELECT * FROM customers ORDER BY id ASC')
-    data = c.fetchall()
-    return data
-
+    # Streamlit securely pulls these variables from your Secrets settings in the cloud dashboard
+    conn = mysql.connector.connect(
+        host=st.secrets["db_host"],
+        user=st.secrets["db_user"],
+        password=st.secrets["db_password"],
+        database=st.secrets["db_name"],
+        port=int(st.secrets.get("db_port", 3306))
+    )
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM your_table_name") # Double check your actual table name here!
+    result = cursor.fetchall()
+    cursor.close()
+    conn.close()
+    return result
 
 
