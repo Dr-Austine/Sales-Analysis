@@ -10,23 +10,27 @@ from mysql_con import *
 # ==============================================================================
 # PLACE THE CORRECTED FUNCTION HERE (Right after your imports)
 # ==============================================================================
-def local_css(style.css):
+# 1. DEFINE the function with a generic variable name (placeholder)
+def local_css(file_name):
     """
     Dynamically builds the path to the CSS file based on Main.py's location
     and injects its styles into the Streamlit DOM.
     """
     current_dir = os.path.dirname(__file__)
-    file_path = os.path.join(current_dir, style.css)
+    file_path = os.path.join(current_dir, file_name)
     
     with open(file_path) as f:
         st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
 
+# 2. CALL the function here and pass your actual file name as a string
+local_css("style.css")
+
+
 # Initialize master application page state parameters
 st.set_page_config("Business Analytics Dashboard", page_icon="", layout="wide")
 
-# Call the function to load your styles
-local_css("style.css")
+
 
 st.subheader("Business Analytics Dashboard")
 
