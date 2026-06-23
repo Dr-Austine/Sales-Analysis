@@ -1,33 +1,36 @@
 import pandas as pd
 import plotly.express as px
-import plotly.subplots as sp
 import streamlit as st
 from streamlit_option_menu import option_menu
+import os  # <-- Make sure OS is imported at the top!
 
-# Call connection file containing custom database access functions (e.g., view_all_data)
+# Call connection file
 from mysql_con import *
 
-
 # ==============================================================================
-# 1. ENVIRONMENT STYLING & GLOBAL CONFIGURATION
+# PLACE THE CORRECTED FUNCTION HERE (Right after your imports)
 # ==============================================================================
-
 def local_css(file_name):
     """
-    Reads an external CSS stylesheet and injects its rule definitions directly 
-    into the running Streamlit DOM to modify global theme variables.
+    Dynamically builds the path to the CSS file based on Main.py's location
+    and injects its styles into the Streamlit DOM.
     """
-    with open(file_name) as f:
+    current_dir = os.path.dirname(__file__)
+    file_path = os.path.join(current_dir, file_name)
+    
+    with open(file_path) as f:
         st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
 
 # Initialize master application page state parameters
 st.set_page_config("Business Analytics Dashboard", page_icon="", layout="wide")
 
-# Apply customized corporate style sheets
+# Call the function to load your styles
 local_css("style.css")
 
 st.subheader("Business Analytics Dashboard")
+
+# ... rest of your code continues below ...
 
 
 # ==============================================================================
