@@ -72,8 +72,12 @@ df = pd.DataFrame(
 
 # Sidebar Navigation Router Block
 with st.sidebar:
-    # Add your brand logo at the very top of the sidebar panel
-    st.image("data/Logo.jpg", caption="Online Analytics")
+    # --- ADD THESE TWO LINES TO DYNAMICALLY LOCATE YOUR LOGO ---
+    current_dir = os.path.dirname(__file__)
+    logo_path = os.path.join(current_dir, "data", "Logo.jpg")
+    
+    # Update line 76 to use logo_path instead of the hardcoded string
+    st.image(logo_path, caption="Online Analytics")
     
     # Navigation menu controller sits immediately underneath the logo
     selected = option_menu(
