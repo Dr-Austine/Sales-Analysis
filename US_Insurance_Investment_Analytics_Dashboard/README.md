@@ -40,14 +40,6 @@ This project demonstrates an end-to-end analytics workflow:
 
 ✅ Data Table Explorer
 
-## Tech Stack
-
-* Python
-* SQL
-* MySQL
-* Pandas
-* Streamlit
-* Plotly
 
 ## Project Structure
 
@@ -106,6 +98,15 @@ streamlit run Main.py
 
 [Insert Screenshot Here]
 
-## Author
+
+## 🛠️ Tech Stack
+
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
+![phpMyAdmin](https://img.shields.io/badge/phpMyAdmin-6C78AF?style=for-the-badge&logo=phpmyadmin&logoColor=white)
+![Plotly](https://img.shields.io/badge/Plotly-3F4F75?style=for-the-badge&logo=plotly&logoColor=white)
+
+## 👨‍💻 Author
 
 Built as part of my Data Analytics portfolio while learning Python, SQL, and Streamlit through hands-on projects.
