@@ -20,16 +20,48 @@ st.set_page_config(
 # ============================================
 # LOAD DATA
 # ============================================
+# ============================================
+# LOAD DATA
+# ============================================
 @st.cache_data
 def load_data():
-    # 1. Finds the folder where Main.py is currently running
     current_dir = os.path.dirname(__file__)
     
-    # 2. Builds a dynamic path to the data folder (Capitalized "Data" to match image_acc10f.png)
-    path = os.path.join(current_dir, "Data", "data.csv")
+    # Path Option 1: Inside the capitalized "Data" folder
+    path_folder = os.path.join(current_dir, "Data", "data.csv")
+    # Path Option 2: Directly next to Main.py (as seen in your image_acc10f.png)
+    path_root = os.path.join(current_dir, "data.csv")
     
-    # 3. Read and process the data
-    df = pd.read_csv(path)
+    # 1. Determine which path actually exists on the server
+    if os.path.exists(path_folder):
+        final_path = path_folder
+    elif os.path.exists(path_root):
+        final_path = path_root
+    else:
+        # 🚨 IF BOTH FAIL, RENDER A DIAGNOSTIC REPORT INSTEAD OF CRASHING
+        st.error("### 🚨 File Location Debugger")
+        st.write(f"**Current App Folder:** `{current_dir}`")
+        
+        st.write("---")
+        st.write("🔍 **Files visible right next to Main.py on GitHub:**")
+        try:
+            st.code("\n".join(os.listdir(current_dir)))
+        except Exception as e:
+            st.write(f"Error reading root directory: {e}")
+            
+        st.write("📂 **Checking for a 'Data' folder...**")
+        data_folder = os.path.join(current_dir, "Data")
+        if os.path.exists(data_folder):
+            st.write("✅ 'Data' folder exists! Inside it, I can see:")
+            st.code("\n".join(os.listdir(data_folder)))
+        else:
+            st.write("❌ No folder named 'Data' exists on the server.")
+            
+        st.info("💡 **Tip:** If you don't see `data.csv` listed above, check your GitHub website repository. It might not have uploaded!")
+        st.stop() # Stops execution gracefully so you can read this report
+
+    # 2. Read and process the data using the validated path
+    df = pd.read_csv(final_path)
     df["OrderDate"] = pd.to_datetime(df["OrderDate"])
     return df
 
