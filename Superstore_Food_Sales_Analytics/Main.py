@@ -27,7 +27,7 @@ def load_data():
     current_dir = os.path.dirname(__file__)
     
     # 2. Builds a dynamic path to the data folder
-    path = os.path.join(current_dir, "data", "data.csv")
+    path = os.path.join(current_dir, "Data", "data.csv")
     
     # 3. Read and process the data
     df = pd.read_csv(path)
