@@ -1,3 +1,4 @@
+import os
 import streamlit as st
 import pandas as pd
 import altair as alt
@@ -19,14 +20,19 @@ st.set_page_config(
 # ============================================
 # LOAD DATA
 # ============================================
+
 @st.cache_data
 def load_data():
-    # Make sure this path exists on your local machine
-    path = r"C:\Users\HomePC\Documents\Sch\Programming\Prog\Visual Studio\Projects\Streamlit\Superstore Food Sales Analytics\data\data.csv"
+    # 1. Finds the folder where Main.py is currently running
+    current_dir = os.path.dirname(__file__)
+    
+    # 2. Builds a dynamic path to the data folder
+    path = os.path.join(current_dir, "data", "data.csv")
+    
+    # 3. Read and process the data
     df = pd.read_csv(path)
     df["OrderDate"] = pd.to_datetime(df["OrderDate"])
     return df
-
 # ============================================
 # FUNCTION TO EXPORT TO EXCEL
 # ============================================
