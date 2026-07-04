@@ -1,6 +1,9 @@
 # 🛒 Superstore Food Sales Analytics Dashboard
+![Data Viewer](Attachment/Image%201.png)
 
 An interactive sales analytics dashboard built with **Python, Streamlit, Pandas, Altair, and Matplotlib** to explore sales performance, monitor KPIs, and generate business insights from a retail food dataset.
+
+🔗 **Live Demo:** https://sales-analysis-krzxlkjy3ih692vbnoydwq.streamlit.app/
 
 ## Project Overview
 
