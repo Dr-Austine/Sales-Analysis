@@ -92,15 +92,16 @@ streamlit run app.py
 
 ### Dashboard
 
-*Insert Screenshot Here*
+![Data Viewer](Attachment/Image%201.png)
 
 ### Exploratory Analysis
 
-*Insert Screenshot Here*
+![Data Viewer](Attachment/Image%202.png)
+![Data Viewer](Attachment/Image%203.png)
+![Data Viewer](Attachment/Image%204.png)
 
 ### Data Viewer
-
-*Insert Screenshot Here*
+![Data Viewer](Attachment/Image%205.png)
 
 ## 🛠️ Tech Stack
 
