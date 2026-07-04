@@ -104,7 +104,7 @@ streamlit run app.py
 
 ### Exploratory Analysis
 
-![Data Viewer](Attachment/Image%202.png)
+![Data Viewer](Attachment/Image%206.png)
 ![Data Viewer](Attachment/Image%203.png)
 ![Data Viewer](Attachment/Image%204.png)
 
