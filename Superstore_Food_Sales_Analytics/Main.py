@@ -6,7 +6,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 from io import BytesIO
 from streamlit_extras.dataframe_explorer import dataframe_explorer
-from streamlit_option_menu import option_menu  # Fixed missing import
+from streamlit_option_menu import option_menu
 
 # ============================================
 # PAGE CONFIG
@@ -20,19 +20,19 @@ st.set_page_config(
 # ============================================
 # LOAD DATA
 # ============================================
-
 @st.cache_data
 def load_data():
     # 1. Finds the folder where Main.py is currently running
     current_dir = os.path.dirname(__file__)
     
-    # 2. Builds a dynamic path to the data folder
+    # 2. Builds a dynamic path to the data folder (Capitalized "Data" to match image_acc10f.png)
     path = os.path.join(current_dir, "Data", "data.csv")
     
     # 3. Read and process the data
     df = pd.read_csv(path)
     df["OrderDate"] = pd.to_datetime(df["OrderDate"])
     return df
+
 # ============================================
 # FUNCTION TO EXPORT TO EXCEL
 # ============================================
@@ -49,11 +49,14 @@ df = load_data()
 # COMBINED SIDEBAR (Navigation & Filters)
 # ============================================
 with st.sidebar:
-    # Brand logo at the top - Fixed broken closing quote syntax
-    st.image(
-        r"C:\Users\HomePC\Documents\Sch\Programming\Prog\Visual Studio\Projects\Streamlit\Superstore Food Sales Analytics\data\Logo.jpg",
-        caption="Superstore Analytics"
-    )
+    # Dynamically find Logo.jpg inside the Data directory relative to Main.py
+    current_dir = os.path.dirname(__file__)
+    logo_path = os.path.join(current_dir, "Data", "Logo.jpg")
+    
+    if os.path.exists(logo_path):
+        st.image(logo_path, caption="Superstore Analytics")
+    else:
+        st.sidebar.warning("⚠️ Logo image missing from Data folder.")
     
     # Navigation menu
     selected = option_menu(
@@ -94,7 +97,7 @@ if df2.empty:
 # ============================================
 # DASHBOARD PAGE
 # ============================================
-if selected == "Dashboard":  # Fixed variable from 'page' to 'selected'
+if selected == "Dashboard":
 
     st.title("🛒 Superstore Food Sales Analytics Dashboard")
     st.info(f"Showing analytics from **{start_date}** to **{end_date}**")
@@ -347,8 +350,9 @@ elif selected == "Exploratory Analysis":
         fig, ax = plt.subplots(figsize=(8, 5))
         value_counts = df2[feature].value_counts()
         
+        # Explicitly added hue and legend=False mapping to eliminate modern Seaborn palette warnings
         sns.countplot(
-            data=df2, x=feature, order=value_counts.index, palette="viridis", ax=ax
+            data=df2, x=feature, order=value_counts.index, hue=feature, palette="viridis", ax=ax, legend=False
         )
         plt.xticks(rotation=45, ha='right')
         ax.set_title(f"Frequency of {feature}")
@@ -356,11 +360,12 @@ elif selected == "Exploratory Analysis":
         ax.set_ylabel("Count")
         
         for p in ax.patches:
-            ax.annotate(
-                f'{int(p.get_height())}',
-                (p.get_x() + p.get_width() / 2., p.get_height()),
-                ha='center', va='center', xytext=(0, 10), textcoords='offset points'
-            )
+            if p.get_height() > 0:  # Guard against undefined or empty patch anomalies
+                ax.annotate(
+                    f'{int(p.get_height())}',
+                    (p.get_x() + p.get_width() / 2., p.get_height()),
+                    ha='center', va='center', xytext=(0, 10), textcoords='offset points'
+                )
         st.pyplot(fig)
 
 # ============================================
