@@ -54,7 +54,12 @@ This project demonstrates an end-to-end data analytics workflow by:
 ├── data/
 │   ├── data.csv
 │   └── Logo.jpg
-├── app.py
+├── Attachment/
+│   ├── Image 1
+│   ├── Image 2
+│   ├── Image 3
+│   ├── Image 4
+├── Main.py
 ├── requirements.txt
 └── README.md
 ```
